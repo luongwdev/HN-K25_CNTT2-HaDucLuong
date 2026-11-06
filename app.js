@@ -4,6 +4,7 @@ let employees = [
     { employeeCode: "EMP-003", fullName: "Mai Quốc Việt", department: "Phòng Kỹ Thuật", age: 24, experienceYears: 1 }
 ];
 
+// Kiểm tra mã nhân viên hợp lệ
 function validateEmployeeCode(code) {
     if (code === "") {
         return "Lỗi: Chưa nhập mã nhân viên";
@@ -23,6 +24,7 @@ function validateEmployeeCode(code) {
     return "";
 }
 
+// Tìm chỉ số nhân viên theo mã
 function findEmployeeIndex(code) {
     for (let i = 0; i < employees.length; i++) {
         if (employees[i].employeeCode === code) {
@@ -32,6 +34,7 @@ function findEmployeeIndex(code) {
     return -1;
 }
 
+// Chuẩn hóa văn bản: viết hoa chữ cái đầu, loại bỏ khoảng trắng thừa
 function normalizeText(rawText) {
     const words = rawText.trim().split(" ");
     let result = [];
@@ -43,6 +46,7 @@ function normalizeText(rawText) {
     return result.join(" ");
 }
 
+// Nhập số nguyên trong khoảng min – max
 function inputIntegerInRange(message, min, max) {
     while (true) {
         const input = prompt(message);
@@ -63,6 +67,7 @@ function inputIntegerInRange(message, min, max) {
     }
 }
 
+// Nhập văn bản không được để trống
 function inputText(message) {
     while (true) {
         const input = prompt(message);
@@ -77,6 +82,7 @@ function inputText(message) {
     }
 }
 
+// Nhập mã nhân viên đã tồn tại, trả về chỉ số trong mảng
 function inputExistingIndex(message) {
     const input = prompt(message);
     if (input === null) {
@@ -91,6 +97,7 @@ function inputExistingIndex(message) {
     return index;
 }
 
+// Hiển thị danh sách nhân viên
 function displayEmployees(list) {
     if (list.length === 0) {
         console.log("Danh sách nhân viên trống");
@@ -104,6 +111,7 @@ function displayEmployees(list) {
     console.log(`Tổng: ${list.length} nhân viên`);
 }
 
+// Hiển thị danh sách nhân viên theo thứ tự hiện tại hoặc sắp xếp theo số năm kinh nghiệm
 function showEmployees() {
     if (employees.length === 0) {
         console.log("Danh sách nhân viên trống");
@@ -118,6 +126,7 @@ function showEmployees() {
     }
 }
 
+// Thêm nhân viên mới
 function addEmployee() {
     const input = prompt("Nhập mã nhân viên:");
     if (input === null) {
@@ -156,6 +165,7 @@ function addEmployee() {
     displayEmployees([newEmployee]);
 }
 
+// Cập nhật thông tin nhân viên
 function updateEmployee() {
     const index = inputExistingIndex("Nhập mã nhân viên cần cập nhật:");
     if (index === -1) {
@@ -179,6 +189,7 @@ function updateEmployee() {
     console.log("Cập nhật thành công");
 }
 
+// Xóa nhân viên
 function deleteEmployee() {
     const index = inputExistingIndex("Nhập mã nhân viên cần xóa:");
     if (index === -1) {
@@ -193,6 +204,7 @@ function deleteEmployee() {
     }
 }
 
+// Tìm kiếm nhân viên theo phòng ban
 function searchByDepartment() {
     const input = prompt("Nhập từ khóa phòng ban:");
     if (input === null || input.trim() === "") {
@@ -208,6 +220,7 @@ function searchByDepartment() {
     }
 }
 
+// In báo cáo tổng kết nhân viên
 function printReport() {
     console.log("==================================================");
     console.log("BÁO CÁO TỔNG KẾT NHÂN VIÊN");
@@ -228,8 +241,9 @@ function printReport() {
         console.log(`Kinh nghiệm nhiều nhất: ${top.employeeCode} - ${top.fullName} - ${top.experienceYears}`);
     }
     console.log("==================================================");
-}1
+}
 
+// Menu chính
 const menu = `=====================================================
 HỆ THỐNG QUẢN LÝ NHÂN VIÊN CÔNG TY SKYTECH
 =====================================================
